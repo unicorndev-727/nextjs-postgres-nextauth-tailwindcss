@@ -7,6 +7,7 @@ import {
   TableCell,
   Text
 } from '@tremor/react';
+import Link from 'next/link';
 
 interface User {
   id: number;
@@ -15,7 +16,7 @@ interface User {
   email: string;
 }
 
-export default function UsersTable({ users }: { users: User[] }) {
+export default function UsersTable({ users, hasLink = false }: { users: User[], hasLink?: boolean }) {
   return (
     <Table>
       <TableHead>
@@ -28,12 +29,12 @@ export default function UsersTable({ users }: { users: User[] }) {
       <TableBody>
         {users.map((user) => (
           <TableRow key={user.id}>
-            <TableCell>{user.name}</TableCell>
+            <TableCell>{hasLink ? <Link key={user.id + 'name'} href={`/user/${user.id}`}>{user.name}</Link> : <>{user.name}</>}</TableCell>
             <TableCell>
-              <Text>{user.username}</Text>
+              <Text>{hasLink ? <Link key={user.id + 'username'} href={`/user/${user.id}`}>{user.username}</Link> : <>{user.username}</>}</Text>
             </TableCell>
             <TableCell>
-              <Text>{user.email}</Text>
+              <Text>{hasLink ? <Link key={user.id + 'email'} href={`/user/${user.id}`}>{user.email}</Link> : <>{user.email}</>}</Text>
             </TableCell>
           </TableRow>
         ))}

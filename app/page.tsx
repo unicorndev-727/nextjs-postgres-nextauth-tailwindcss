@@ -3,7 +3,7 @@ import { Card, Title, Text } from '@tremor/react';
 import Search from './search';
 import UsersTable from './table';
 
-interface User {
+export interface User {
   id: number;
   name: string;
   username: string;
@@ -29,7 +29,7 @@ export default async function IndexPage({
       <Text>A list of users retrieved from a Postgres database.</Text>
       <Search />
       <Card className="mt-6">
-        <UsersTable users={users} />
+        <UsersTable users={users} hasLink={true} />
       </Card>
     </main>
   );
