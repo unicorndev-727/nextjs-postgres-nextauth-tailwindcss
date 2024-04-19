@@ -7,7 +7,7 @@ export default async function User({ params }: { params: { id: string } }) {
     const result = await sql`
     SELECT id, name, username, email 
     FROM users 
-    WHERE id LIKE ${params.id};
+    WHERE id = ${params.id};
   `;
     const users = result.rows as User[];
 

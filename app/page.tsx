@@ -29,7 +29,7 @@ export default async function IndexPage({
       <Text>A list of users retrieved from a Postgres database.</Text>
       <Search />
       <Card className="mt-6">
-        <UsersTable users={users} />
+        <UsersTable users={users} hasLink={true} />
       </Card>
     </main>
   );
